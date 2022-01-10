@@ -1,0 +1,24 @@
+function solution(lottos, win_nums) {
+    
+    const a = [6, 5, 4, 3, 2, 1];
+    
+    var lcnt = 0;//lottos 0일 때
+    var rcnt = 0;//lottos와 win_nums가 같을 때
+    for(let i = 0 ; i< lottos.length; i++){
+        if(lottos[i] == 0){
+            lcnt++;
+        }
+        for(let j = 0; j<win_nums.length; j++){
+            if(lottos[i] == win_nums[j]){
+                rcnt++;
+            }
+        }
+    }
+    console.log("lcnt:"+lcnt);
+    console.log("rcnt:"+rcnt);
+    
+    var answer = [];
+    answer = rcnt == 0 ? [a[lcnt+rcnt-1], 6] : [a[lcnt+rcnt-1], a[rcnt-1]];
+    
+    return answer;
+}
