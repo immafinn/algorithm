@@ -1,0 +1,53 @@
+def solution(numbers, hand):
+    
+    
+    
+    
+    #print(numbers)
+    #print(hand)
+    answer = ''
+    lKeyPad = ['*','7','4','1'] #0 -- 0,0  0,1  0,2  0,3
+    nKeyPad = ['2','5','8','0'] #1 -- 1,0  1,1  1,2  1,3
+    rKeyPad = ['#','9','6','3'] #2 -- 2,0  2,1  2,2  2,3
+    
+    
+    for idx in range(len(numbers)):
+        string = str(numbers[idx])
+        
+        if string in rKeyPad: 
+            print("======================")
+            print("오른쪽")
+            print(string)
+            answer += 'R'
+        elif string in lKeyPad: 
+            print("======================")
+            print("왼쪽")
+            print(string)
+            answer += 'L'
+        elif string in nKeyPad:
+            print("======================")
+            print("좌표구하기 시작")
+            print(string)
+            print(numbers[idx-1])
+            
+            
+            #해당 숫자의 2차원 배열 좌표 구하기
+            1, nKeyPad.index(string) # 1, 1
+            #왼손위치 구하기
+            print('왼손위치 구하기')
+            print(answer)
+            if answer.rfind('L') > -1:
+                print(lKeyPad 어디포함하냐 numbers[answer.rfind('L')])#0,2
+                
+            if answer.rfind('R') > -1:
+                print(answer.rfind('R'))#2,1
+            
+            
+            0, nKeyPad.index(string) # 1, 1
+            #왼손위치의 2차원 배열 좌표 구하기
+            #오른손위치 구하기
+            #오른손위치의 2차원 배열 좌표 구하기
+            
+            answer += '?'
+        
+    return answer
