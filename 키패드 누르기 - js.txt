@@ -1,0 +1,110 @@
+function solution(numbers, hand) {
+    let lKeyPad = ['*','7','4','1']; //0 -- 0,0  0,1  0,2  0,3
+    let nKeyPad = ['2','5','8','0']; //1 -- 1,0  1,1  1,2  1,3
+    let rKeyPad = ['#','9','6','3']; //2 -- 2,0  2,1  2,2  2,3
+    let answer = '';
+    hand = hand.toUpperCase().charAt();
+    let left = 0;//왼 손 위치
+    let n = 0;//가운데 손 위치
+    let right = 0;//오른쪽 손 위치
+    for(let i = 0; i < numbers.length; i++){
+        let str = numbers[i]+"";
+        
+        if (rKeyPad.includes(str)){
+            console.log("======================");
+            console.log("오른쪽");
+            console.log(str);
+            right = rKeyPad.indexOf(str);
+            answer += 'R';
+        }else if (lKeyPad.includes(str)){
+            console.log("======================");
+            console.log("왼쪽");
+            console.log(str);
+            left = lKeyPad.indexOf(str);
+            answer += 'L';
+        }else{
+            console.log("======================");
+            console.log("둘다 아님");
+            console.log(str);
+            console.log("좌표구하기 시작");
+            n = nKeyPad.indexOf(str);
+            if(left - n < right - n){//왼쪽이 오른쪽보다 가까움
+                console.log("L");
+                //answer += 'L';
+            }else if(left - n == right - n){//왼쪽이 오른쪽보다 가까움
+                console.log("L");
+                //answer += 'L';
+            }else{
+                console.log("R");
+                //answer += 'R';
+            }
+            // lKeyPad[left] //0,2
+            // rKeyPad[right] //2,3
+            // nKeyPad[n] //1,1
+            answer += '?';
+        }
+    }
+    
+    
+    // hand = hand.toUpperCase().charAt();
+    // var answer = '';
+    // const keyPad = [
+    //     ['1','2','3'],
+    //     ['4','5','6'],
+    //     ['7','8','9'],
+    //     ['*','0','#']
+    // ];
+    // var left = keyPad[3][0];
+    // var right = keyPad[3][2];
+    // var str = '';
+    // numbers = numbers.filter(function(item1, i1, newArr1){
+    //     keyPad.filter(function(item2, i2, newArr2){
+    //         item2.filter(function(item3, i3, newArr3){
+    //             if(item3 == item1.toString()){//keypad의 번호와 입력번호가 같다면
+    //                 if(i3 == 0){
+    //                     str = 'L';
+    //                     left = item1.toString();
+    //                 }
+    //                 if(i3 == 1){
+    //                     let obj = {
+    //                         left : [],
+    //                         right : []
+    //                     };
+    //                     for(let i = 0; i<keyPad.length; i++){
+    //                         for(let j = 0; j<keyPad[i].length; j++){
+    //                             if(keyPad[i][j] == left){
+    //                                 obj.left.push(i, j);
+    //                             }
+    //                             if(keyPad[i][j] == right){
+    //                                 obj.right.push(i, j);
+    //                             }
+    //                         }
+    //                     }
+    //                     let leftSign = Math.abs(i2 - obj.left[0]) + Math.abs(i3 - obj.left[1]);
+    //                     let rightSign = Math.abs(i2 - obj.right[0]) + Math.abs(i3 - obj.right[1]);
+    //                     if(leftSign > rightSign){
+    //                         str = 'R';
+    //                         right = item1.toString();
+    //                     }else if(leftSign < rightSign){
+    //                         str = 'L';
+    //                         left = item1.toString();
+    //                     }else{
+    //                         str = hand;
+    //                         if(hand == 'L'){
+    //                             left = item1.toString();
+    //                         }else{
+    //                             right = item1.toString();
+    //                         }
+    //                     }
+    //                 }
+    //                 if(i3 == 2){
+    //                     str = 'R';
+    //                     right = item1.toString();
+    //                 }
+    //                 answer += str;
+    //             }
+    //         });
+    //     });
+    // });
+    return answer;
+}
