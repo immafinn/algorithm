@@ -1,0 +1,44 @@
+function solution(numbers, hand) {
+    hand = hand.toUpperCase().charAt();
+    let answer = '';
+    const keyPad = [['*','7','4','1'], ['0','8','5','2'], ['#','9','6','3']];
+    let left = [0, 0];
+    let n = [1, 0];
+    let right = [2, 0];
+    for(let i = 0; i < numbers.length; i++){
+        let str = numbers[i] + "";
+        if (keyPad[2].includes(str)){
+            right[0] = 2;
+            right[1] = keyPad[2].indexOf(str);
+            answer += 'R';
+        }else if (keyPad[0].includes(str)){
+            left[0] = 0;
+            left[1] = keyPad[0].indexOf(str);
+            answer += 'L';
+        }else{
+            n[1] = keyPad[1].indexOf(str);
+            let leftSign = Math.abs(n[0] - left[0])+Math.abs(n[1] - left[1]);
+            let rightSign = Math.abs(n[0] - right[0])+Math.abs(n[1] - right[1]);
+            if( leftSign == rightSign ){
+                if(hand == 'L'){
+                    left[0] = n[0];
+                    left[1] = n[1];
+                    answer += 'L';
+                }else{
+                    right[0] = n[0];
+                    right[1] = n[1];
+                    answer += 'R';
+                }
+            }else if( leftSign < rightSign ){
+                left[0] = n[0];
+                left[1] = n[1];
+                answer += 'L';
+            }else{
+                right[0] = n[0];
+                right[1] = n[1];
+                answer += 'R';
+            }
+        }
+    }
+    return answer;
+}
