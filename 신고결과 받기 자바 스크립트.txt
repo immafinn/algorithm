@@ -1,0 +1,22 @@
+function solution(id_list, report, k) {
+    let a = [];
+    let s = new Set(report);
+    report = Array.from(s);
+    let o = {};
+    id_list.filter(function(it, i){a.push(0);o[id_list[i]] = [];});
+    report.filter(function(it, i){
+        let f = it.split(" ")[0];
+        let t = it.split(" ")[1];
+        o[t].push(id_list.indexOf(f));
+        if(i == report.length-1){
+            id_list.filter(it2 => {
+                if(o[it2].length >= k){
+                    o[it2].filter(it3 => {
+                        a[it3]++;
+                    });
+                }
+            });
+        }
+    });
+    return a;
+}
