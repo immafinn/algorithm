@@ -1,0 +1,50 @@
+function solution(board, moves) {
+    var answer = 0;
+    var answerArr = [];
+    
+    for(let i = 0; i<moves.length; i++){
+        for(let j = 0; j<board.length; j++){
+            if(board[j][moves[i]-1] != 0 
+               && answerArr.length > 0 
+               && answerArr[answerArr.length-1] == board[j][moves[i]-1]){
+                answerArr.pop();
+                answer+=2;
+                board[j][moves[i]-1] = 0;
+                break;
+            }else if(board[j][moves[i]-1] != 0 && answerArr[answerArr.length-1] != board[j][moves[i]-1]){
+                answerArr.push(board[j][moves[i]-1]);
+                board[j][moves[i]-1] = 0;
+                break;
+            }
+        }
+    }
+    
+    
+//     var answer = 0;
+//     console.log(board);
+//     var answerArr = [];
+//     var movesCnt = moves.length;
+    
+//     for(let i = 0; i < moves.length; i++){
+//         for(let j = 0; j < board.length; j++){
+//             for(let k = 0; k < board[j].length; k++){
+//                 if((moves[i]-1) == k && board[j][k] >0){
+//                     console.log(board[j][k]);
+//                     if(answerArr[answerArr.length - 1] == board[j][k]){
+//                         answerArr.pop();
+//                         answer+=2;
+//                     }else{
+//                         answerArr.push(board[j][k]);
+//                     }
+                    
+//                     board[j][k] = 0;
+//                     moves[i] = 0;
+//                 }
+//             }
+//         }
+//     }
+//     console.log(answerArr);
+//     console.log(answer);
+    
+    return answer;
+}
