@@ -1,0 +1,11 @@
+https://programmers.co.kr/learn/courses/30/lessons/62048?language=java
+
+class Solution {
+    public long solution(int w, int h) {
+        System.out.println(Math.sqrt(Math.pow(w, 2) + Math.pow(h, 2)));
+        //int result = (int)Math.ceil(Math.sqrt(Math.pow(w, 2) + Math.pow(h, 2)));
+        //result = result % 2 == 1 ? result+1 : result;
+        //return (w * h) - result;
+        return 0;
+    }
+}
