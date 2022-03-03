@@ -1,8 +1,22 @@
-https://programmers.co.kr/learn/courses/30/lessons/62048?language=java
-
 class Solution {
     public long solution(int w, int h) {
         System.out.println(Math.sqrt(Math.pow(w, 2) + Math.pow(h, 2)));
+        int gcd = 0;
+        int small = w < h ? w : h;
+        int left = 0;
+        int right = 0;
+        for(int i = 1; i<small; i++){
+            if(w%i == 0 && h%i == 0){
+                left = w/i;
+                right = h/i;
+            }
+        }
+        System.out.println("left : "+left);
+        System.out.println("right : "+right);
+        //이거 다시 풀게되면 해보기
+        //1. 비율의 작은수에 * 2
+        //2. 비율의 큰 수에서 작은 수 뺀 값이 1을 넘으면 그 수만큼 더하기.
+ 
         //int result = (int)Math.ceil(Math.sqrt(Math.pow(w, 2) + Math.pow(h, 2)));
         //result = result % 2 == 1 ? result+1 : result;
         //return (w * h) - result;
